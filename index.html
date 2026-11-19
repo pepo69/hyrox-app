@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="HYROX">
+  <meta name="theme-color" content="#000000">
+  <meta name="referrer" content="no-referrer">
+  <title>HYROX booker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="stylesheet" href="app.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="title">
+      <h1>HYROX</h1>
+      <span id="sub" class="sub">auto-booking</span>
+    </div>
+    <button id="refresh" class="icon" aria-label="Refresh">
+      <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5"/></svg>
+    </button>
+    <button id="open-settings" class="icon" aria-label="Settings">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1.1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg>
+    </button>
+  </header>
+
+  <div class="seg" role="tablist">
+    <button role="tab" data-tab="days" aria-selected="true">Next 14 days</button>
+    <button role="tab" data-tab="weekly" aria-selected="false">Weekly</button>
+  </div>
+
+  <div id="banner" class="banner" hidden></div>
+  <main id="main"></main>
+  <div id="toast" class="toast" hidden></div>
+
+  <dialog id="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Settings</h2>
+      <label>Booker repository
+        <input id="set-repo" placeholder="owner/repo" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off">
+      </label>
+      <label>GitHub token
+        <input id="set-token" type="password" placeholder="github_pat_…" autocapitalize="off" autocorrect="off" spellcheck="false" autocomplete="off">
+      </label>
+      <p class="hint">
+        A <b>fine-grained</b> token for that repository only, with
+        <b>Contents: Read and write</b> and <b>Actions: Read and write</b>.
+        It is kept only on this phone, inside this app.
+      </p>
+      <p id="set-error" class="error" hidden></p>
+      <div class="row">
+        <button type="button" id="set-forget" class="secondary">Forget</button>
+        <button type="button" id="set-cancel" class="secondary">Cancel</button>
+        <button type="submit" id="set-save" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
